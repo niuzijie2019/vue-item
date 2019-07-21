@@ -7,7 +7,12 @@
         @click-left="onClickLeft"
       />
       <div class="content">
-        <van-address-edit
+        <ul>
+          <li v-for="(item, index) of cartlist" :key="index">
+            {{ item.title }}
+          </li>
+        </ul>
+        <!-- <van-address-edit
           :area-list="areaList"
           show-postal
           show-delete
@@ -17,15 +22,17 @@
           @save="onSave"
           @delete="onDelete"
           @change-detail="onChangeDetail"
-        />
+        /> -->
       </div>
-      <van-area :area-list="areaList" @click="region" v-show="flag"/>
+      <!-- <van-area :area-list="areaList" @click="region" v-show="flag"/> -->
   </div>
 </template>
 
 <script>
 import Vue from 'vue'
 import { NavBar, AddressEdit, Area, Toast } from 'vant'
+// import { mapState } from '_vuex@3.1.1@vuex'
+import { mapState } from 'vuex'
 Vue.use(NavBar)
 Vue.use(AddressEdit)
 Vue.use(Area)
@@ -62,7 +69,13 @@ export default {
       flag: false
     }
   },
-
+  computed: {
+    ...mapState({
+      cartlist (state) {
+        return state.cartlist
+      }
+    })
+  },
   methods: {
     region () {
       this.flag = true

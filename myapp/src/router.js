@@ -24,10 +24,17 @@ export default new Router({
       }
     },
     {
-      path: '/detail/:id',
+      path: '/detail/:images',
       name: 'detail',
       components: {
         default: () => import('./views/detail/detail.vue')
+      }
+    },
+    {
+      path: '/ticket/:id',
+      name: 'ticket',
+      components: {
+        default: () => import('./views/detail/ticket.vue')
       }
     },
     {
@@ -35,6 +42,14 @@ export default new Router({
       name: 'movie',
       components: {
         default: () => import('./views/movie/movie.vue'),
+        footer: Footer
+      }
+    },
+    {
+      path: '/cinema',
+      name: 'cinema',
+      components: {
+        default: () => import('./views/movie/cinema.vue'),
         footer: Footer
       }
     },

@@ -22,10 +22,15 @@
               </div>
             </div>
             <div class="grade">
-              <Rating :rating="(grade / 2).toFixed(1)"/>
-              <div class="num">
-                <span>淘票票评分</span>
-                <a href="javascript:;">19.7万人评 ></a>
+              <div class="ratings">
+                <Rating :rating="(grade / 2).toFixed(1)"/>
+                <div class="num">
+                  <span>淘票票评分</span>
+                  <a href="javascript:;">19.7万人评 ></a>
+                </div>
+              </div>
+              <div class="price">
+                ￥{{ price }}
               </div>
             </div>
           </div>
@@ -40,30 +45,8 @@
           </van-tabs>
         </div>
         <div class="select_theaters" @click="buyTicket">
-          选座购票
+          购票
         </div>
-      <!-- <van-goods-action>
-        <van-goods-action-icon
-          icon="chat-o"
-          text="客服"
-          @click="service"
-        />
-        <van-goods-action-icon
-          icon="cart-o"
-          text="购物车"
-          @click="cart"
-        />
-        <van-goods-action-button
-          type="warning"
-          text="加入购物车"
-          @click="addcart"
-        />
-        <van-goods-action-button
-          type="danger"
-          text="立即购票"
-          @click="buy"
-        />
-      </van-goods-action> -->
     </div>
 </template>
 
@@ -84,7 +67,9 @@ export default {
       actor: '',
       img: '',
       grade: '',
-      b: ''
+      b: '',
+      price: '',
+      arr: ''
     }
   },
   components: {
@@ -95,7 +80,7 @@ export default {
       this.$router.back()
     },
     buyTicket () {
-      this.$router.push('/movie')
+      this.$router.push('/cart')
     }
   },
   mounted () {
@@ -108,10 +93,14 @@ export default {
     const { $route: { params: { images } } } = this
     const { $route: { params: { grade } } } = this
     const { $route: { params: { b } } } = this
-    // const { $route: { params: { actor } } } = this
+    const { $route: { params: { price } } } = this
+    const { $route: { params: { e } } } = this
+    const { $route: { params: { room } } } = this
+    const { $route: { params: { lang } } } = this
     // console.log(id)
     // console.log(title)
     // console.log(director)
+    const num = 1
     this.title = title
     this.type = type
     this.director = director
@@ -119,7 +108,12 @@ export default {
     this.img = images
     this.grade = grade
     this.b = b
-    // console.log(id)
+    this.price = price
+    let arr = [ { 'title': title, 'type': type, 'images': images, 'b': b, 'price': price, 'e': e, 'room': room, 'lang': lang, 'num': num } ]
+    console.log(arr)
+    this.$store.commit('changeCartList', {
+      result: arr
+    })
   }
 }
 </script>
@@ -172,7 +166,7 @@ li {
         .dtls {
           display: flex;
           img {
-            // width: 1rem;
+            width: 1rem;
             height: 1.3rem;
           }
           .right {
@@ -204,6 +198,9 @@ li {
           }
         }
         .grade {
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
           .rating {
             font-size: 22px;
             font-weight: bold;
@@ -217,6 +214,12 @@ li {
               font-size: 12px;
               color: #9a9a9a;
             }
+          }
+          .price {
+            font-size: 18px;
+            font-weight: bold;
+            color: #f66;
+            margin-right: 0.2rem;
           }
         }
       }

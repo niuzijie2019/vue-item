@@ -5,7 +5,44 @@
         <span>上海</span>
         <!-- <input type="text" id="cardsNum2" v-model="searchVal"  value="1" v-on:input ="inputFunc"> -->
         <input type="text" id="cardsNum2" placeholder="电影、影院">
-        <span class="iconfont icon-sousuo"></span>
+        <i class="iconfont icon-Category" type="primary" @click="showPopup">
+        </i>
+        <van-popup
+          v-model="show"
+          position="left"
+          :style="{ width: '70%', height: '100%' }"
+        >
+          <div class="users">
+            <div class="title">
+              <div class="head_photo">
+                <img src="http://b-ssl.duitang.com/uploads/item/201510/08/20151008192345_uPC5U.jpeg" alt="">
+              </div>
+            </div>
+            <div class="list">
+              <!-- <span></span> -->
+              <li>
+                <span>编辑签名</span>
+                <span>></span>
+              </li>
+              <li>
+                <span>通用</span>
+                <span>></span>
+              </li>
+              <li>
+                <span>设置</span>
+                <span>></span>
+              </li>
+              <li>
+                <span @click="quitLogin">退出登录</span>
+                <span>></span>
+              </li>
+            </div>
+          </div>
+        </van-popup>
+        <!-- <van-button type="primary" @click="showPopup">
+          展示弹出层
+        </van-button>
+        <van-popup v-model="show">内容</van-popup> -->
       </div>
       <ul ref="list"></ul>
     </header>
@@ -54,12 +91,13 @@
 <script>
 import Prolist from '@/components/conmen/proList'
 import Vue from 'vue'
-import { Swipe, SwipeItem, List, PullRefresh, Icon, Sidebar } from 'vant'
+import { Swipe, SwipeItem, List, PullRefresh, Icon, Sidebar, Popup } from 'vant'
 Vue.use(Swipe).use(SwipeItem)
 Vue.use(List)
 Vue.use(PullRefresh)
 Vue.use(Icon)
 Vue.use(Sidebar)
+Vue.use(Popup)
 export default {
   data () {
     return {
@@ -70,10 +108,17 @@ export default {
       isLoading: false,
       pageNum: 1,
       flag: false,
-      searchVal: ''
+      searchVal: '',
+      show: false
     }
   },
   methods: {
+    quitLogin () {
+      console.log('退出登录')
+    },
+    showPopup () {
+      this.show = true
+    },
     onRefresh () {
       this.isLoading = true
       fetch('https://www.daxunxun.com/douban').then(res => res.json()).then(data => {
@@ -108,13 +153,12 @@ export default {
     }
   },
   mounted () {
-    fetch('https://www.daxunxun.com/banner').then(res => res.json()).then(data => {
+    fetch('/api/banner').then(res => res.json()).then(data => {
       // console.log(data)
       let arr = []
-      data.map(item => {
-        item = 'https://www.daxunxun.com' + item
-        arr.push(item)
-      })
+      for (let i = 0; i < data.length; i++) {
+        arr.push(data[i].image)
+      }
       // console.log(arr)
       this.bannerList = arr
     })
@@ -152,6 +196,56 @@ export default {
 </script>
 
 <style lang="scss">
+.users {
+  .list {
+    li:hover {
+      background-color: #ccc;
+    }
+    li {
+      list-style: none;
+      border-bottom: 1px solid #ccc;
+      display: flex;
+      justify-content: space-between;
+      font-size: 16px;
+      background-color: #fff;
+    }
+  }
+  .title {
+    display: flex;
+    width: 100%;
+    height: 1rem;
+    line-height: 1rem;
+    border-bottom: 1px solid #ccc;
+    // align-items: center;
+    // justify-content: space-between;
+    .head_photo {
+      width: 0.6rem;
+      height: 0.6rem;
+      background-color: #fff;
+      border-radius: 50%;
+      margin-left: 0.3rem;
+      // margin-top: 0.2rem;
+      img {
+        width: 100%;
+        height: 100%;
+        border-radius: 50%;
+      }
+      .van-span {
+        margin-top: 0.5rem;
+      }
+    }
+  }
+}
+.seek {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-right: 0.1rem;
+  i {
+    font-size: 18px;
+    font-weight: bold;
+  }
+}
 .van-swipe {
   img {
     width: 100%;

@@ -204,8 +204,14 @@ export default {
       p {
         font-size: 14px;
       }
-      .icon-shouye {
+      .icon-dianying {
         color: #ff3577;
+      }
+      .icon-yanchupiao {
+        color: blue;
+      }
+      .icon-youhuiquan {
+        color: lightgreen;
       }
     }
   }
@@ -238,6 +244,15 @@ export default {
         p {
           font-size: 14px;
         }
+        .icon-yifukuan {
+          color: greenyellow;
+        }
+        .icon-qian {
+          color: #f40;
+        }
+        .icon-lishijilu {
+          color: lightseagreen;
+        }
       }
     }
   }
@@ -269,6 +284,12 @@ export default {
         }
         p {
           font-size: 14px;
+        }
+        .icon-youhuiquan {
+          color: gold;
+        }
+        .icon-quanyiqia {
+          color: pink;
         }
       }
     }

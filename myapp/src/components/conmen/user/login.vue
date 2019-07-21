@@ -4,19 +4,19 @@
       <div class="head_photo">
         <img src="http://b-ssl.duitang.com/uploads/item/201510/08/20151008192345_uPC5U.jpeg" alt="">
       </div>
-      <van-button type="default">欢迎您***</van-button>
+      <span>千锋彭于晏</span>
     </div>
     <div class="kind">
       <li>
-        <span class="iconfont icon-shouye"></span>
+        <span class="iconfont icon-dianying"></span>
         <p>电影</p>
       </li>
       <li>
-        <span class="iconfont icon-shouye"></span>
+        <span class="iconfont icon-yanchupiao"></span>
         <p>演出票</p>
       </li>
       <li>
-        <span class="iconfont icon-shouye"></span>
+        <span class="iconfont icon-youhuiquan"></span>
         <p>小食券</p>
       </li>
     </div>
@@ -26,15 +26,15 @@
       </div>
       <ul>
         <li>
-          <span class="iconfont icon-shouye"></span>
+          <span class="iconfont icon-qian"></span>
           <p>待付款</p>
         </li>
         <li>
-          <span class="iconfont icon-shouye"></span>
+          <span class="iconfont icon-yifukuan"></span>
           <p>已付款</p>
         </li>
         <li>
-          <span class="iconfont icon-shouye"></span>
+          <span class="iconfont icon-lishijilu"></span>
           <p>历史记录</p>
         </li>
       </ul>
@@ -45,15 +45,15 @@
       </div>
       <ul>
         <li>
-        <span class="iconfont icon-shouye"></span>
+        <span class="iconfont icon-youhuiquan"></span>
         <p>优惠券</p>
       </li>
       <li>
-        <span class="iconfont icon-shouye"></span>
+        <span class="iconfont icon-quanyiqia"></span>
         <p>权益卡</p>
       </li>
       <li>
-        <span class="iconfont icon-shouye"></span>
+        <span class="iconfont icon-quanyiqia"></span>
         <p>乐影卡</p>
       </li>
       </ul>
@@ -143,6 +143,8 @@ export default {
     // background-color: #ff3577;
     background-image: url('http://img4.imgtn.bdimg.com/it/u=1011025542,1440730234&fm=26&gp=0.jpg');
     display: flex;
+    color: #fff;
+    font-size: 20px;
 
     .head_photo {
       width: 0.8rem;
@@ -155,9 +157,10 @@ export default {
         height: 100%;
         border-radius: 50%;
       }
-    }
-    .van-button {
-      margin-left: 0.2rem;
+      span {
+        color: #fff;
+        font-size: 20px;
+      }
     }
   }
   .kind {
@@ -178,8 +181,14 @@ export default {
       p {
         font-size: 14px;
       }
-      .icon-shouye {
+      .icon-dianying {
         color: #ff3577;
+      }
+      .icon-yanchupiao {
+        color: blue;
+      }
+      .icon-youhuiquan {
+        color: lightgreen;
       }
     }
   }
@@ -212,6 +221,15 @@ export default {
         p {
           font-size: 14px;
         }
+        .icon-yifukuan {
+          color: greenyellow;
+        }
+        .icon-qian {
+          color: #f40;
+        }
+        .icon-lishijilu {
+          color: lightseagreen;
+        }
       }
     }
   }
@@ -242,6 +260,12 @@ export default {
         }
         p {
           font-size: 14px;
+        }
+        .icon-youhuiquan {
+          color: gold;
+        }
+        .icon-quanyiqia {
+          color: pink;
         }
       }
     }

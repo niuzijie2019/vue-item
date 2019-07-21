@@ -70,12 +70,20 @@ html, body, #app {
         justify-content: space-between;
         margin-top: 0.2rem;
         span {
-          font-size: 20px;
+          font-size: 18px;
           font-weight: bold;
         }
         i {
+          display: inline-block;
+          width: 0.7rem;
+          height: 0.2rem;
+          line-height: 0.2rem;
+          border: 1px solid rgb(204, 204, 204);
+          text-align: center;
+          border-radius: 10px;
           font-size: 14px;
           font-weight: bold;
+          margin-top: 0.05rem;
         }
       }
       .hot {
