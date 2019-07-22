@@ -141,7 +141,7 @@ export default {
     height: 1.3rem;
     align-items: center;
     // background-color: #ff3577;
-    background-image: url('http://img4.imgtn.bdimg.com/it/u=1011025542,1440730234&fm=26&gp=0.jpg');
+    background-image: url('http://img4.imgtn.bdimg.com/it/u=1011025542,1440730234&fm=26&gp=0.jpg') no-repeat center center;
     display: flex;
     color: #fff;
     font-size: 20px;

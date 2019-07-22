@@ -4,11 +4,15 @@
       <header class="header">头部</header>
       <div class="content">中部</div>
     </div> -->
-    <keep-alive>
-      <!-- 如果路由设置了meta，并且keepAlive为true,避免组件的重新渲染 -->
-      <router-view v-if="$route.meta.keepAlive"></router-view>
-    </keep-alive>
-    <router-view v-if = "!$route.meta.keepAlive"></router-view>
+    <transition name="slide">
+      <keep-alive>
+        <!-- 如果路由设置了meta，并且keepAlive为true,避免组件的重新渲染 -->
+        <router-view v-if="$route.meta.keepAlive"></router-view>
+      </keep-alive>
+    </transition>
+    <transition name="slide">
+      <router-view v-if = "!$route.meta.keepAlive"></router-view>
+    </transition>
     <router-view name="footer"></router-view>
     <!-- <router-view></router-view>
     <router-view name="footer"></router-view> -->
@@ -160,4 +164,10 @@ html, body, #app {
     padding-left: 0.2rem;
   }
 }
+.slide-enter { transform: translateX(100%) }
+.slide-enter-active { transition: all 0.3s }
+.slide-enter-to { transform: translateX(0)}
+.slide-leave {}
+.slide-leave-active {}
+.slide-enter-to {}
 </style>

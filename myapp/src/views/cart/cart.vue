@@ -47,7 +47,9 @@
         </div>
       </div>
       <div class="content" v-else>
-        购物车空空如也
+        <div class="car" @click="gohome">
+          购物车空空如也
+        </div>
       </div>
     </div>
 </template>
@@ -74,6 +76,9 @@ export default {
       // console.log('提交订单')
       // console.log(this.$store)
       this.show = true
+    },
+    gohome () {
+      this.$router.push('/home')
     }
   },
   computed: {
@@ -127,6 +132,16 @@ export default {
 .content {
   background-color: rgb(247, 244, 244);
   position: relative;
+  .car {
+    width: 1.5rem;
+    height: 0.4rem;
+    line-height: 0.4rem;
+    text-align: center;
+    background-color: #f66;
+    border-radius: 8px;
+    margin: 0.5rem auto;
+    color: #fff;
+  }
   .carts {
     margin: 0.1rem;
     background-color: #fff;
@@ -209,10 +224,10 @@ export default {
     border-top: 1px solid #ccc;
     display: flex;
     justify-content: space-between;
-    
     .van-popup {
       display: flex;
       flex-direction: column;
+      text-align: center;
       img {
         width: 1.3rem;
         height: 1.3rem;

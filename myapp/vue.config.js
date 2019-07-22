@@ -3,7 +3,7 @@ module.exports = {
     // proxy: 'https://dsapi.beibei.com'
     proxy: {
       '/api': {
-        target: 'http://10.11.56.6:3000',
+        target: 'https://dsapi.beibei.com',
         changeOrigin: true,
         pathRewrite: {
           '^/api': ''

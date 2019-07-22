@@ -67,7 +67,7 @@ export default {
     this.where = where
     this.name = name
     this.price = price
-    fetch('/api/movie').then(res => res.json()).then(data => {
+    fetch('http://47.101.147.200:3000/movie').then(res => res.json()).then(data => {
       console.log(data)
       this.prolist = data
     })

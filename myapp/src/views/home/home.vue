@@ -121,7 +121,7 @@ export default {
     },
     onRefresh () {
       this.isLoading = true
-      fetch('https://www.daxunxun.com/douban').then(res => res.json()).then(data => {
+      fetch('http://47.101.147.200:3000/movie').then(res => res.json()).then(data => {
         this.isLoading = false
         this.prolist = data
         this.pageNum = 1
@@ -130,7 +130,7 @@ export default {
     },
     onLoad () {
       this.loading = true
-      fetch('/api/movie?count=10&start=' + this.pageNum * 10).then(res => res.json()).then(data => {
+      fetch('http://47.101.147.200:3000/movie?count=10&start=' + this.pageNum * 10).then(res => res.json()).then(data => {
         this.loading = false
         this.pageNum++
         if (data.length === 0) {
@@ -153,7 +153,7 @@ export default {
     }
   },
   mounted () {
-    fetch('/api/banner').then(res => res.json()).then(data => {
+    fetch('http://47.101.147.200:3000/banner').then(res => res.json()).then(data => {
       // console.log(data)
       let arr = []
       for (let i = 0; i < data.length; i++) {
@@ -162,7 +162,7 @@ export default {
       // console.log(arr)
       this.bannerList = arr
     })
-    fetch('/api/movie').then(res => res.json()).then(data => {
+    fetch('http://47.101.147.200:3000/movie').then(res => res.json()).then(data => {
       console.log(data)
       this.prolist = data
       // console.log(this.prolist.images.small)

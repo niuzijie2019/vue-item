@@ -32,7 +32,7 @@ export default {
     }
   },
   mounted () {
-    fetch('/api/cinema').then(res => res.json()).then(data => {
+    fetch('http://47.101.147.200:3000/cinema').then(res => res.json()).then(data => {
       console.log(data)
       this.cinema = data
     })
